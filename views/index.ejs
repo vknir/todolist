@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To Do List</title>
+</head>
+<body>
+    
+        <div class="box" id="heading">
+            <h1><%= date %></h1>
+        </div>
+        
+        <div class="box">
+           <% if (locals.arrayOfWork) { %>
+            <form action="/delete" method="post">
+            <% for(let i=0;i<arrayOfWork.length;i++){ %>
+                <div class="item">
+                <input type="checkbox" name="deleteItem" value="<%=arrayOfWork[i].id %>" onChange="this.form.submit()"> 
+                <p  ><%= arrayOfWork[i].item %></p>    
+                </div>
+                <% } %>
+            </form>  
+            <%} %>
+            <form action="/" method="post">
+                <div class="submit">
+                <input type="text" name="addItem"  placeholder="New Item">
+                <button type="submit">+</button>
+                </div>
+            </form>
+        </div>
+
+    
+    
+</body>
+</html>
